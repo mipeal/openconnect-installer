@@ -125,8 +125,8 @@ echo ''
 if [[ $LIST != "" ]] ; then
   while read -r -a line; do
     if [[ "${line[0]}" != "" ]] ; then
-      echo "   For user ${line[0]} password updated with ${line[1]}"
-      echo "${line[1]}" | ocpasswd -c /etc/ocserv/ocpasswd "${line[0]}" &
+      echo "   For user ${line[1]} in group ${line[0]} password updated with ${line[2]}"
+      echo "${line[2]}" | ocpasswd -c /etc/ocserv/ocpasswd "${line[1]}"  -g "${line[0]}"&
       wait
     fi
   done < $LIST
